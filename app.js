@@ -1,5 +1,7 @@
 const searchForm = document.querySelector("[data-search-form]");
 const searchInput = searchForm.querySelector("[name=search]");
+const pageUp = searchForm.querySelector("#pageup");
+const pageDown = searchForm.querySelector("#pagedown");
 
 function createElement(userName, userAvatar, userPage) {
     const resultElement = document.createElement("div");
@@ -19,7 +21,7 @@ function noLoader() {
 };
 
 function showError(code) {
-    const error = document.querySelector("[data-result-error");
+    const error = document.querySelector("[data-result-error]");
     if (code === 403) {
         error.innerText = "To many requests! Try again later.";
     } else {
@@ -28,9 +30,15 @@ function showError(code) {
 };
 
 function noError() {
-    const error = document.querySelector("[data-result-error");
+    const error = document.querySelector("[data-result-error]");
     error.innerText = "";
 };
+
+function getTotalCount(count) {
+    const totalCount = document.querySelector("[data-total-count]");
+    totalCount.innerText = `Results: ${count}`;
+}
+
 
 searchForm.addEventListener("keyup", (event) => {
     event.preventDefault();
@@ -38,14 +46,16 @@ searchForm.addEventListener("keyup", (event) => {
 
     if (searchInput.value.length > 0) {
 
-        const endpoint = `https://api.github.com/search/users?q=${searchInput.value}&page=1&per_page=100`;
-        console.log(searchInput.value);
+        let search = searchInput.value;
+        let user = search.split(" ").join("");
+
+        const endpoint = `https://api.github.com/search/users?q=${user}&page=1&per_page=100`;
 
         fetch(endpoint)
             .then((response) => {
                 showLoader();
                 noError();
-                if (response.status === 200) {
+                if (response.ok) {
                     console.log("Ok!");
                     return response.json();
                 } else if (response.status === 403) {
@@ -55,6 +65,7 @@ searchForm.addEventListener("keyup", (event) => {
             .then((data) => {
                 noLoader();
                 noError();
+                getTotalCount(data.total_count);
                 searchListElement.innerHTML = "";
 
                 for (let i = 0; i < data.items.length; i++) {
@@ -71,6 +82,7 @@ searchForm.addEventListener("keyup", (event) => {
                 console.log("Fetch error: ", error);
             });
     } else {
+        page = 0;
         searchListElement.innerHTML = "";
     };
 });
