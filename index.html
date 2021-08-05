@@ -11,17 +11,26 @@
 
 <body>
 
-    <h1>Search for GitHub users</h1>
+    <h1 class="header"><span>GitHub</span> users search</h1>
     <form data-search-form>
-        <input type="text" name="search">
+        <input class="search-input" type="text" name="search">
     </form>
-    <div data-total-count></div>
 
-    <div data-result-list></div>
+    <div class="result-per-page">
+        <button data-30-per-page>30</button>
+        <button data-60-per-page>60</button>
+        <button data-100-per-page>100</button>
+    </div>
 
-    <div data-result-error></div>
+    <div class="result-counter" data-total-count></div>
 
-    <div class="lds-facebook">
+    <table class="result-list" data-result-list></table>
+
+    <div class="result-page" data-result-page></div>
+
+    <div class="result-error" data-result-error></div>
+
+    <div class="loading-animation" data-loading-animation>
         <div></div>
         <div></div>
         <div></div>

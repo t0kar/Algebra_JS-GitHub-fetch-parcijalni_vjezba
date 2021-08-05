@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -12,62 +12,48 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
-
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
+article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-  display: block;
+	display: block;
 }
-
 body {
-  line-height: 1;
+	line-height: 1;
 }
-
 ol, ul {
-  list-style: none;
+	list-style: none;
 }
-
 blockquote, q {
-  quotes: none;
+	quotes: none;
 }
-
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: '';
-  content: none;
+	content: '';
+	content: none;
 }
-
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 body {
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
   font-family: 'Roboto Mono', monospace;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
   min-height: 100vh;
   background-color: white;
   font-size: 12px;
@@ -83,10 +69,13 @@ body {
 
 .header > span:hover {
   color: #21262d;
+  //font-weight: bolder;
   /* Remove comment for text-shadow on "DARK" */
+  //text-shadow: 0 0 5px #1f6feb;
 }
 
 .search-input {
+  //background-color: #0d1117;
   color: inherit;
   border: 1px solid #21262d;
   border-radius: 8px;
@@ -100,25 +89,15 @@ body {
 
 .search-input:focus {
   border: 1px solid #1f71eb36;
-  -webkit-box-shadow: 0 0 3px 3px #1f71eb36;
-          box-shadow: 0 0 3px 3px #1f71eb36;
+  box-shadow: 0 0 3px 3px #1f71eb36;
   outline: none;
 }
 
 .result-per-page {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .result-per-page > button {
@@ -144,6 +123,7 @@ body {
   margin-bottom: 1rem;
 }
 
+// for list
 /* .result-list {
   display: flex;
   flex-flow: column nowrap;
@@ -156,6 +136,8 @@ body {
   width: 25rem;
   //align-items: center;
 } */
+
+//for table
 .result-list {
   color: inherit;
   font-size: 1rem;
@@ -176,32 +158,32 @@ body {
 .result-list th {
   height: 3rem;
   font-weight: bold;
-  text-align: left;
+  text-align: left; 
   vertical-align: middle;
 }
 
 .result-list td:first-child {
   width: 3rem;
   height: 3rem;
-  text-align: right;
+  text-align: right; 
   vertical-align: middle;
 }
 
 .result-list td:nth-child(2) {
   width: 4rem;
-  text-align: center;
+  text-align: center; 
   vertical-align: middle;
 }
 
 .result-list td:nth-child(3) {
   width: 12rem;
-  text-align: left;
+  text-align: left; 
   vertical-align: middle;
 }
 
 .result-list td:last-child {
   width: 6rem;
-  text-align: left;
+  text-align: left; 
   vertical-align: middle;
 }
 
@@ -214,9 +196,8 @@ body {
 }
 
 .result-list img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 50%;
+  object-fit: cover;
+  border-radius:50%;
   width: 40px;
   height: 40px;
 }
@@ -227,59 +208,39 @@ body {
 }
 
 .loading-animation {
-  display: none;
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-
-.loading-animation div {
-  display: inline-block;
-  position: absolute;
-  left: 8px;
-  width: 16px;
-  background: black;
-  -webkit-animation: loading-animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-          animation: loading-animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-}
-
-.loading-animation div:nth-child(1) {
-  left: 8px;
-  -webkit-animation-delay: -0.24s;
-          animation-delay: -0.24s;
-}
-
-.loading-animation div:nth-child(2) {
-  left: 32px;
-  -webkit-animation-delay: -0.12s;
-          animation-delay: -0.12s;
-}
-
-.loading-animation div:nth-child(3) {
-  left: 56px;
-  -webkit-animation-delay: 0;
-          animation-delay: 0;
-}
-
-@-webkit-keyframes loading-animation {
-  0% {
-    top: 8px;
-    height: 64px;
+    display: none;
+    position: relative;
+    width: 80px;
+    height: 80px;
   }
-  50%, 100% {
-    top: 24px;
-    height: 32px;
+  .loading-animation div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: rgb(0, 0, 0);
+    animation: loading-animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   }
-}
-
-@keyframes loading-animation {
-  0% {
-    top: 8px;
-    height: 64px;
+  .loading-animation div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
   }
-  50%, 100% {
-    top: 24px;
-    height: 32px;
+  .loading-animation div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
   }
-}
-/*# sourceMappingURL=style.css.map */
+  .loading-animation div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+  }
+  @keyframes loading-animation {
+    0% {
+      top: 8px;
+      height: 64px;
+    }
+    50%, 100% {
+      top: 24px;
+      height: 32px;
+    }
+  }
+  
