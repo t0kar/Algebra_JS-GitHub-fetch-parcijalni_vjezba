@@ -85,9 +85,9 @@ function reset() {
     error.innerHTML = "";
     searchInput.value = "";
     perPageAll.style.display = "none";
-    perPage30.style.background = "#1f71eb36";
-    perPage60.style.background = "#80808013";
-    perPage100.style.background = "#80808013";
+    perPage30.style.background = "hsla(203, 61%, 13%, 0.1)";
+    perPage60.style.background = "transparent";
+    perPage100.style.background = "transparent";
 };
 
 // pagination
@@ -200,24 +200,24 @@ searchDelete.addEventListener("click", () => {
 // results-per-page button events
 perPage30.addEventListener("click", (event) => {
     event.preventDefault();
-    perPage30.style.background = "#1f71eb36";
-    perPage60.style.background = "#80808013";
-    perPage100.style.background = "#80808013";
+    perPage30.style.background = "hsla(203, 61%, 13%, 0.1)";
+    perPage60.style.background = "transparent";
+    perPage100.style.background = "transparent";
     return apiFetch(30);
 });
 
 perPage60.addEventListener("click", (event) => {
     event.preventDefault();
-    perPage30.style.background = "#80808013";
-    perPage60.style.background = "#1f71eb36";
-    perPage100.style.background = "#80808013";
+    perPage30.style.background = "transparent";
+    perPage60.style.background = "hsla(203, 61%, 13%, 0.1)";
+    perPage100.style.background = "transparent";
     return apiFetch(60);
 });
 
 perPage100.addEventListener("click", (event) => {
     event.preventDefault();
-    perPage30.style.background = "#80808013";
-    perPage60.style.background = "#80808013";
-    perPage100.style.background = "#1f71eb36";
+    perPage30.style.background = "transparent";
+    perPage60.style.background = "transparent";
+    perPage100.style.background = "hsla(203, 61%, 13%, 0.1)";
     return apiFetch(100);
 });
