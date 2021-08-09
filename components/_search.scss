@@ -1,0 +1,88 @@
+//search bar
+
+.search {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 2rem;
+  
+    //logo
+    img {
+      height: 6rem;
+      padding: 1rem;
+      position: absolute;
+      cursor: pointer;
+      z-index: 99;
+      transition: 500ms height ease-in-out;
+    }
+  
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      padding: 1rem;
+      position: absolute;
+      cursor: pointer;
+    }
+  
+    //close icon
+    &__close {
+      right: 0;
+      fill: white;
+      transition: 500ms fill ease-in;
+    }
+  
+    //delete icon
+    &__delete {
+      fill: $color-main;
+      right: 3rem;
+      display: none;
+    }
+  
+    input {
+      border: none; 
+      opacity: 0%;
+      padding: 0rem 1rem 0rem 6rem;
+      font-family: inherit;
+      font-size: 2rem;
+      color: $color-main;
+      outline: none;
+      width: 2rem;
+      transition: 
+        500ms width ease-in-out,
+        500ms padding ease-in-out,
+        800ms opacity ease-in-out;
+  
+    //when content is in text field show delete button
+      &:not(:placeholder-shown) ~ .search__delete {
+        display: block;
+      }
+    }
+  
+    //open state input bar
+    &-open input{
+      width: 15rem;
+      padding: 0rem 7rem 0rem 6rem;
+      opacity: 100%;
+    }
+  
+    //open state logo
+    &-open img{
+      animation:spin 500ms linear;
+      height: 4rem;
+    }
+  
+    //when search bar is visible show close button
+    &-open svg.search__close {
+      fill: $color-main;
+    }
+  }
+
+  //search animation
+  @keyframes spin { 
+    from { 
+        transform: rotate(0deg); 
+    } to { 
+        transform: rotate(360deg); 
+    }
+  };

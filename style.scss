@@ -1,246 +1,28 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+@import "./base/reset";
+@import "./base/typography";
+@import "./components/search";
+@import "./components/table";
+@import "./components/loading";
+@import "./components/pagination";
+@import "./components/header";
+@import "./components/per-page";
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
 
 body {
-  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-  font-family: 'Roboto Mono', monospace;
+  font-family: $font-family-main;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
   background-color: white;
-  font-size: 12px;
+  font-size: $size-unit;
+  color: $color-main;
 }
 
-.header {
-  display: block;
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: normal;
-  margin: 100px 0px 50px 0px;
-}
 
-.header > span:hover {
-  color: #21262d;
-  //font-weight: bolder;
-  /* Remove comment for text-shadow on "DARK" */
-  //text-shadow: 0 0 5px #1f6feb;
-}
 
-.search-input {
-  //background-color: #0d1117;
-  color: inherit;
-  border: 1px solid #21262d;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  width: 25rem;
-  height: 3rem;
-  display: block;
-  font-size: 2rem;
-  padding: 0.5rem;
-}
 
-.search-input:focus {
-  border: 1px solid #1f71eb36;
-  box-shadow: 0 0 3px 3px #1f71eb36;
-  outline: none;
-}
 
-.result-per-page {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.result-per-page > button {
-  color: inherit;
-  background: #80808013;
-  border: 1px solid #585b5f7a;
-  border-radius: 0.5rem;
-  margin: 0.5rem 1rem 1rem auto;
-  width: 2.5rem;
-  height: 1.5rem;
-  display: block;
-  font-size: 0.8rem;
-  padding: 0;
-}
-
-.result-per-page > button:first-child {
-  background: #1f71eb36;
-}
-
-.result-counter {
-  color: inherit;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-// for list
-/* .result-list {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  color: inherit;
-  font-size: 1rem;
-  padding: 0.5rem;
-  border: 0px solid #21262d;
-  border-radius: 8px;
-  width: 25rem;
-  //align-items: center;
-} */
-
-//for table
-.result-list {
-  color: inherit;
-  font-size: 1rem;
-}
-
-.result-list tr {
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.25);
-}
-
-.result-list tr:first-child {
-  border-bottom: 1px solid black;
-}
-
-.result-list tr:last-child {
-  border-bottom: 1px solid black;
-}
-
-.result-list th {
-  height: 3rem;
-  font-weight: bold;
-  text-align: left; 
-  vertical-align: middle;
-}
-
-.result-list td:first-child {
-  width: 3rem;
-  height: 3rem;
-  text-align: right; 
-  vertical-align: middle;
-}
-
-.result-list td:nth-child(2) {
-  width: 4rem;
-  text-align: center; 
-  vertical-align: middle;
-}
-
-.result-list td:nth-child(3) {
-  width: 12rem;
-  text-align: left; 
-  vertical-align: middle;
-}
-
-.result-list td:last-child {
-  width: 6rem;
-  text-align: left; 
-  vertical-align: middle;
-}
-
-.result-list tr:not(:first-child):hover {
-  background: #1f71eb33;
-}
-
-.result-list td:nth-child(3):hover {
-  color: #022c6b;
-}
-
-.result-list img {
-  object-fit: cover;
-  border-radius:50%;
-  width: 40px;
-  height: 40px;
-}
-
-.result-list a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.loading-animation {
-    display: none;
-    position: relative;
-    width: 80px;
-    height: 80px;
-  }
-  .loading-animation div {
-    display: inline-block;
-    position: absolute;
-    left: 8px;
-    width: 16px;
-    background: rgb(0, 0, 0);
-    animation: loading-animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-  }
-  .loading-animation div:nth-child(1) {
-    left: 8px;
-    animation-delay: -0.24s;
-  }
-  .loading-animation div:nth-child(2) {
-    left: 32px;
-    animation-delay: -0.12s;
-  }
-  .loading-animation div:nth-child(3) {
-    left: 56px;
-    animation-delay: 0;
-  }
-  @keyframes loading-animation {
-    0% {
-      top: 8px;
-      height: 64px;
-    }
-    50%, 100% {
-      top: 24px;
-      height: 32px;
-    }
-  }
   
